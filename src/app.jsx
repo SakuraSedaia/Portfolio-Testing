@@ -14,7 +14,8 @@ export default function App() {
           <Suspense>{props.children}</Suspense>
         </>
       )}
-      base={BaseRoute}
+      base={import.meta.env.SERVER_BASE_URL}
+      url={"/"}
     >
       <FileRoutes />
     </Router>
