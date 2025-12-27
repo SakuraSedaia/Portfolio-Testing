@@ -5,16 +5,15 @@ import Nav from "~/components/Nav";
 import "./app.scss";
 
 export default function App() {
-  const BaseRoute = "/Portfolio-Testing/";
   return (
     <Router
+      base={import.meta.env.SERVER_BASE_URL}
       root={(props) => (
         <>
           <Nav />
           <Suspense>{props.children}</Suspense>
         </>
       )}
-      base={import.meta.env.SERVER_BASE_URL}
       url={"/"}
     >
       <FileRoutes />
