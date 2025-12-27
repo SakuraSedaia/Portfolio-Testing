@@ -235,9 +235,9 @@ function About() {
           <p>
             Towards the middle of my Senior year in High School I would begin
             developing my first real big asset for Blender, and that would be my{" "}
-            <a class={"link"} href={"/rig/sakura-character-rig"}>
+            <A class={"link"} href={"/rig/sakura-character-rig"}>
               Advanced Character Rig
-            </a>{" "}
+            </A>{" "}
             for Blender 2.8, which would be a continuous and never-ending
             project that is now currently on Revision 7 with Revision 8 in
             development, and in late 2025 I would begin working more seriously
