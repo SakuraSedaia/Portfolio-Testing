@@ -5,7 +5,7 @@ import Nav from "~/components/Nav";
 import "./app.scss";
 
 export default function App() {
-  const BaseRoute = "/Portfolio-Testing";
+  const BaseRoute = "/Portfolio-Testing/";
   return (
     <Router
       root={(props) => (
