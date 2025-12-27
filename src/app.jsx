@@ -5,14 +5,16 @@ import Nav from "~/components/Nav";
 import "./app.scss";
 
 export default function App() {
+  const BaseRoute = "/Portfolio-Testing";
   return (
     <Router
-      root={props => (
+      root={(props) => (
         <>
           <Nav />
           <Suspense>{props.children}</Suspense>
         </>
       )}
+      base={BaseRoute}
     >
       <FileRoutes />
     </Router>
