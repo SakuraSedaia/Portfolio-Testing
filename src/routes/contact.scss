@@ -1,0 +1,41 @@
+.body-content {
+  margin: 0 1rem; // mx-4
+}
+
+.contact-link {
+  color: var(--tx-accent);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--bg-accent);
+    box-shadow: 0 0.1em var(--bg-accent);
+  }
+}
+
+.contact-container {
+  justify-content: center;
+  display: flex;
+  padding-top: 3.75rem; // pt-15
+}
+
+.contact-content {
+  font-family: var(--font), serif;
+  text-align: left;
+  max-width: 1280px;
+  display: inline-block;
+  flex-basis: 1280px;
+  padding: 0 5rem; // px-20
+  font-size: 1.125rem; // text-lg
+
+  .section-header {
+    padding-bottom: 3rem; // pb-12
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-indent: 2rem;
+    letter-spacing: 0.05em;
+    font-size: 1.25rem; // text-xl
+  }
+}
