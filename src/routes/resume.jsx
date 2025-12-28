@@ -1,6 +1,9 @@
+import Header from "~/components/Header.jsx";
+
 function Resume() {
   return (
     <>
+      <Header onlyNav={true} />
       <a
         class={"link"}
         href={"/"}
@@ -8,7 +11,7 @@ function Resume() {
           "margin: 2em; display: block; font-size: 16pt; width: fit-content;"
         }
       >
-        &#060; Return to Home Page
+        &lt; Return to Home Page
       </a>
       <center style={"font-size: 24px; padding-block: 8rem; font-weight: 600;"}>
         Resume Coming Soon!

@@ -10,7 +10,6 @@ export default function App() {
       base={import.meta.env.SERVER_BASE_URL}
       root={(props) => (
         <>
-          <Nav />
           <Suspense>{props.children}</Suspense>
         </>
       )}

@@ -1,11 +1,11 @@
-import Header from "~/components/Header";
+import Header from "~/components/Header.jsx";
 import "./assets.scss";
 import Footer from "~/components/Footer.jsx";
 
 function assets() {
   return (
     <>
-      <Header title="Assets and Extensions" background="renders" />
+      <Header title="Assets and Extensions" img="renders" />
 
       <div class={"content-container"}>
         <section class={"about"}>
@@ -22,7 +22,10 @@ function assets() {
 
           <column-container>
             <column>
-              <img src={"images/rig-headers/SACR/R7.4 Full.png"} />
+              <img
+                src={"images/rig-headers/SACR/R7.4 Full.png"}
+                alt={"Sakura's Advanced Character Rig Logo"}
+              />
               <hr />
               <p>
                 Sakura's Advanced Character Rig is a Minecraft Character rig
@@ -30,7 +33,7 @@ function assets() {
                 being a lightweight, highly customizable minecraft rig able to
                 be used on all levels of hardware.
               </p>
-              <a class={"btn"} href={"/sakura-character-rig"}>
+              <a class={"btn"} href={"/asset/sakura-character-rig"}>
                 See Rig Page
               </a>
             </column>
@@ -38,6 +41,7 @@ function assets() {
             <column>
               <img
                 src={"images/rig-headers/rig-interface/rig-interface-3.png"}
+                alt={"Sakura's Rig Interface Logo Version 3"}
               />
               <hr />
               <p>
@@ -47,7 +51,7 @@ function assets() {
                 be used on all levels of hardware.
               </p>
               <div class="btn-centered">
-                <a class={"btn"} href={"/sakura-rig-interface"}>
+                <a class={"btn"} href={"/asset/sakura-rig-interface"}>
                   See Extension Page
                 </a>
                 <a

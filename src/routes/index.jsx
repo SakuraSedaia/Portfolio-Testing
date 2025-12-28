@@ -1,5 +1,4 @@
-import Header from "~/components/Header";
-import "./index.scss";
+import Header from "~/components/Header.jsx";
 import Footer from "~/components/Footer.jsx";
 import { A } from "@solidjs/router";
 
@@ -8,24 +7,25 @@ function About() {
     <>
       <Header
         title="Sakura Sedaia"
-        background="about"
+        img="about"
         desc="Freelance Software Developer and 3D Artist"
       />
 
       <div class={"content-container"}>
-        <section class={"about"}>
+        <section id={"about-me"}>
           <heading>
             <h1>Who am I?</h1>
           </heading>
-          {/* Who am I? */}
+
           <column-container>
             <column>
               <p>
                 I am a {new Date().getFullYear() - 2003} year old, self taught{" "}
-                <i>Software Developer</i> specializing in SolidJS, SCSS, and
-                Python based projects, and currently work alone on a few passion
-                projects including this website, an extension for Blender, and
-                other small utilities for helping with those projects.
+                <i>Software Developer</i> and novice UI Designer specializing in
+                SolidJS, SCSS, and Python based projects, and currently work
+                alone on a few passion projects including this website, an
+                extension for Blender, and other small utilities for helping
+                with those projects.
               </p>
             </column>
 
@@ -41,7 +41,7 @@ function About() {
           </column-container>
         </section>
 
-        <section class={"notable-projects"}>
+        <section id={"notable-projects"} breakout accent>
           <heading>
             <h1>Notable Projects</h1>
           </heading>
@@ -49,6 +49,7 @@ function About() {
           <grid-container>
             <grid-item>
               <h1>Portfolio Website</h1>
+              <hr />
               <p>
                 This very website you are on now is one of my latest, and most
                 complex projects so far. It was created due to a desire to have
@@ -65,6 +66,11 @@ function About() {
 
             <grid-item>
               <h1>Rig Interface</h1>
+              <hr />
+              <img
+                src={"images/rig-headers/rig-interface/rig-interface-3.png"}
+                alt={"Rig Interface Logo V3"}
+              />
               <p>
                 The Rig Interface is my first big Python Project, working
                 exclusively with the Blender Python API it contains several
@@ -81,7 +87,7 @@ function About() {
           </grid-container>
         </section>
 
-        <section class={"preferred-tooling"}>
+        <section id={"preferred-tooling"}>
           <heading>
             <h1>Preferred Tooling</h1>
           </heading>
@@ -187,7 +193,8 @@ function About() {
           </column-container>
         </section>
 
-        <section class={"resume"} breakout accent>
+        {/* TODO: Add Logos to each entry */}
+        <section id={"my-resume"} breakout accent>
           <div class={"content"}>
             <span>
               Interested? Check out my Resume to get a more in depth profile on
@@ -199,51 +206,25 @@ function About() {
           </div>
         </section>
 
-        <section class={"story"}>
-          {/* Story */}
+        <section id={"technologies"}>
           <heading>
-            <h1>My Story</h1>
+            <h1>My Technologies</h1>
           </heading>
-          <p>
-            I got my start in computer graphics in early 2015 when I was
-            introduced to an open source 3D tool suite called Blender, and from
-            there my skills would gradually grow into where I am today.
-            Throughout middle school I would focus a lot on building my 3D
-            Rendering skills, and would eventually begin experimenting with
-            graphic design and photo editing in 2018 to enhance my renders even
-            further and create my own graphics for my Youtube Channel.
-          </p>
-          <p>
-            Those carried me for a good 2 years before in High School, I would
-            be introduced to the world of HTML by a friend of mine, and I
-            started experimenting and learning how to code and build plain HTML
-            CSS sites from scratch. At the start I never touched Javascript,
-            though after about a year of practice I began to experiment more
-            with JS and making random pointless projects to learn different
-            aspects of HTML manipulation using JavaScript functions.
-          </p>
-          <p>
-            During the latter years of High School I would take two courses
-            which progressed my skill-set further, those being an Adobe
-            Dreamweaver class and a Graphic Design class. In my Dreamweaver
-            class I began learning the basics of using Adobe Dreamweaver for
-            Website development, though now-a-days I favor Jetbrains PyCharm
-            over Dreamweaver due to the enhanced toolset. My Graphic Design
-            class was more learning the essentials of color theory and Scalable
-            Vector Design.
-          </p>
-          <p>
-            Towards the middle of my Senior year in High School I would begin
-            developing my first real big asset for Blender, and that would be my{" "}
-            <A class={"link"} href={"/rig/sakura-character-rig"}>
-              Advanced Character Rig
-            </A>{" "}
-            for Blender 2.8, which would be a continuous and never-ending
-            project that is now currently on Revision 7 with Revision 8 in
-            development, and in late 2025 I would begin working more seriously
-            to learn Python to create a new controller interface for better
-            managing the rig, skins, and adding more utilities into Blender.
-          </p>
+          <column-container flow>
+            <ul>
+              <li>Blender 3D</li>
+              <li>Blender Python API</li>
+              <li>HTML</li>
+              <li>SCSS</li>
+              <li>CSS</li>
+              <li>SolidJS</li>
+              <li>Python</li>
+              <li>JavaScript</li>
+              <li>Blockbench</li>
+              <li>Davinci Resolve</li>
+              <li>Affinity Photo 2</li>
+            </ul>
+          </column-container>
         </section>
       </div>
 

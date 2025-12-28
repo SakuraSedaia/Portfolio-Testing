@@ -1,21 +1,37 @@
+import Nav from "~/components/Nav.jsx";
+import { createSignal, Show } from "solid-js";
 
-function Header(props) {
-  var bgImg =
-    "background-image: url(/images/headers/" + props.background + ".jpg";
+export default function Header(props) {
+  const bgImg = "background-image: url(/images/headers/" + props.img + ".jpg";
+
+  let page_title = props.page_title;
+  if (page_title === undefined) {
+    page_title = "Sedaia Designs";
+  }
 
   return (
-    <div class={"header-container"}>
-      <header>
-        <div class={"header-sizing"} style={bgImg}>
-          <div class={"header-content"}>
-            <div class={"title"}>
-              <h1>{props.title}</h1>
-              <p>{props.desc}</p>
-            </div>
-          </div>
-        </div>
+    <>
+      <header style={bgImg}>
+        {/* Navigation Content */}
+        <Nav title={page_title} />
+
+        <Show when={props.onlyNav === false || undefined}>
+          {/* Header Content */}
+          <header-box>
+            <header-position>
+              <header-content>
+                <Show when={props.title !== undefined}>
+                  <h1>{props.title}</h1>
+                </Show>
+
+                <Show when={props.desc !== undefined}>
+                  <p>{props.desc}</p>
+                </Show>
+              </header-content>
+            </header-position>
+          </header-box>
+        </Show>
       </header>
-    </div>
+    </>
   );
 }
-export default Header;

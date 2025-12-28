@@ -1,12 +1,12 @@
 // Variables
-$font-main: "PT Sans", sans-serif;
+$font-main: "Open Sans", sans-serif;
 $font-heading: "Source Sans Pro", serif;
 
 :root {
   /* Defaults */
   --bg-primary: 0, 0%, 97%;
   --bg-secondary: 0, 0%, 90%;
-  --bg-accent: 0, 23%, 33%;
+  --bg-accent: 340, 33%, 83%;
   --bg-contrast-light: 0, 0%, 20%;
   --bg-contrast-dark: 0, 0%, 10%;
   --bg-dark-accent: 334, 79%, 29%;
@@ -15,14 +15,16 @@ $font-heading: "Source Sans Pro", serif;
 
   --tx-primary: 0, 0%, 0%;
   --tx-secondary: 0, 0%, 14%;
-  --tx-accent: 334, 79%, 29%;
+  --tx-accent: 334, 50%, 15%;
   --tx-contrast-light: 0, 0%, 90%, 1;
   --tx-contrast-dark: 0, 0%, 80%, 1;
   --tx-contrast-accent: 328, 62%, 85%;
 
-  --tx-gradient: linear-gradient(90deg,
-      hsl(297, 96%, 57%) 0%,
-      hsl(328, 87%, 51%) 100%);
+  --tx-gradient: linear-gradient(
+    90deg,
+    hsl(297, 96%, 57%) 0%,
+    hsl(328, 87%, 51%) 100%
+  );
 
   /* Fonts */
   --font: #{$font-main};
@@ -41,7 +43,7 @@ $font-heading: "Source Sans Pro", serif;
     0px 3px 5px -1px #00000075, 0px 5px 8px 0px #00000079,
     0px 1px 14px 0px #00000036;
 
-  --drop-shadow: drop-shadow(.25rem .5rem 0.25rem #1f0109);
+  --drop-shadow: drop-shadow(0.25rem 0.5rem 0.25rem #19191940);
 
   // Radius
   --radius-sm: 0.25rem;
@@ -52,21 +54,36 @@ $font-heading: "Source Sans Pro", serif;
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: 350, 5%, 5%;
-    --bg-secondary: 350, 10%, 10%;
-    --bg-accent: 334, 60%, 20%;
-    --bg-gradient: linear-gradient(45deg,
-        hsl(240, 5%, 5%) 0%,
-        hsl(168, 5%, 6%) 100%);
+    --bg-primary: 260, 5%, 5%;
+    --bg-secondary: 260, 10%, 10%;
+    --bg-accent: 334, 40%, 10%;
+    --bg-contrast-light: 0, 0%, 20%;
+    --bg-contrast-dark: 0, 0%, 10%;
+    --bg-contrast-accent: 180, 10%, 10%;
+    --bg-gradient: linear-gradient(
+      45deg,
+      hsl(240, 5%, 5%) 0%,
+      hsl(168, 5%, 6%) 100%
+    );
 
-    --bg-gradient-dark: linear-gradient(45deg, hsla(330, 23%, 10%, 0%), hsl(310, 100%, 10%, 50%));
+    --bg-gradient-dark: linear-gradient(
+      45deg,
+      hsla(330, 23%, 10%, 0%),
+      hsl(310, 100%, 10%, 50%)
+    );
 
     --tx-primary: 190, 8%, 85%;
     --tx-secondary: 0, 0%, 78%;
     --tx-accent: 328, 62%, 85%;
-    --tx-gradient: linear-gradient(90deg,
-        hsl(299, 83%, 84%) 0%,
-        hsl(328, 53%, 61%) 100%);
+    
+    --tx-contrast-light: 0, 0%, 90%, 1;
+    --tx-contrast-dark: 0, 0%, 80%, 1;
+    --tx-contrast-accent: 180, 62%, 85%;
+    --tx-gradient: linear-gradient(
+      90deg,
+      hsl(299, 83%, 84%) 0%,
+      hsl(328, 53%, 61%) 100%
+    );
   }
 }
 
@@ -94,31 +111,60 @@ h3 {
   font-family: var(--font-heading), serif;
   font-weight: var(--font-heading-weight);
 }
+
 h1 {
   font-size: 20pt;
 }
+
 h2 {
   font-size: 18pt;
 }
+
 h3 {
   font-size: 16pt;
 }
-p {
-  letter-spacing: .35pt;
-}
 
+p {
+  letter-spacing: 0.35pt;
+}
+// Header
+header {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  header-box {
+    display: block;
+    padding-block: 3rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 6rem;
+      
+      header-content {
+        width            : fit-content;
+        padding          : 1rem;
+        border-radius    : var(--radius-lg);
+        box-shadow       : var(--box-shadow-lg);
+        background-color : hsla(var(--bg-primary), 75%);
+        backdrop-filter  : blur(4px);
+        border           : 2px solid hsla(var(--tx-secondary), 25%);
+        display          : block;
+      
+    }
+  }
+}
 // Navigation
 nav {
-  .nav-contain {
+  nav-container {
     background-color: hsl(var(--bg-accent));
     color: hsl(var(--tx-primary));
     padding: 1rem;
+    display: block;
 
     .nav-section {
       display: inline-block;
     }
 
-    .nav-title {
+    nav-title {
       display: inline-block;
       flex-basis: 2.5rem; // basis-10
       text-align: center;
@@ -138,27 +184,67 @@ nav {
       }
     }
 
-    .router {
+    nav-router {
       float: right;
       display: flex;
     }
   }
 
+  sub-navigation {
+    background-color: hsl(var(--bg-contrast-dark));
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    text-align: right;
+    
+    nav-item a {
+        color: hsl(var(--tx-contrast-light));
+        
+        &:hover {
+          color: hsl(var(--tx-contrast-accent)) !important;
+          box-shadow-color: hsl(var(--tx-contrast-accent)) !important;
+          border-color: hsl(var(--tx-contrast-accent)) !important;
+          border-radius: var(--radius-lg);
+        }
+    }
+    .active a {
+      color: hsl(var(--tx-contrast-accent)) !important;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 0;
+      border: 2px solid transparent !important;
+      border-bottom-color: hsl(var(--tx-contrast-accent)) !important;
+      
+      &:hover {
+        border: 2px solid hsl(var(--tx-contrast-light)) !important;
+        color: hsl(var(--tx-contrast-light)) !important;
+        border-radius: var(--radius-lg);
+      }
+    }
+    nav-arrow {
+      display: inline-block;
+      padding-inline: 0.5rem;
+      color: hsl(var(--tx-contrast-light));
+    }
+  }
+  
   .active a {
     color: hsl(var(--tx-accent)) !important;
     cursor: pointer;
     font-weight: 600;
-    letter-spacing: 1px;
-    border: 2px solid hsl(var(--tx-accent)) !important;
+    border-radius: 0;
+    border: 2px solid transparent !important;
+    border-bottom-color: hsl(var(--tx-accent)) !important;
 
     &:hover {
       border: 2px solid hsl(var(--tx-primary)) !important;
       color: hsl(var(--tx-primary)) !important;
-
+      border-radius: var(--radius-lg);
     }
   }
 
-  .nav-item {
+  nav-item {
     display: inline-block;
     flex-basis: 2.5rem; // basis-10
     text-align: center;
@@ -182,72 +268,36 @@ nav {
       }
     }
   }
+}
 
-  .sub-nav {
-    background-color: hsl(var(--bg-contrast-light));
-    color: hsl(var(--tx-contrast-light));
-    text-align: right;
-    padding: 1rem;
-
-    .nav-arrow {
-      display: inline-block;
-      cursor: default;
-      padding: 0;
-    }
-
-    .nav-item {
-      display: inline-block;
-      width: fit-content;
-      padding: 0 0.5rem;
-    }
-  }
-
-  .sub-nav-root,
-  .sub-nav-item {
-    display: inline-block;
-
-    a {
-      font-size: 14pt;
-      letter-spacing: 0.5pt;
-      padding: 3px 0.5rem;
-      border-radius: var(--radius-lg);
-      border: 2px solid transparent;
-      box-shadow: 0 0 hsl(var(--tx-contrast-accent));
-      text-decoration: none;
-      color: inherit;
-
-      &:hover {
-        color: hsl(var(--tx-contrast-accent));
-        box-shadow: 0 0 3px hsl(var(--tx-contrast-accent));
-        border-color: hsl(var(--tx-contrast-accent));
-        cursor: pointer;
+// Navigation and Header Mobile Responsive
+@media screen and (max-width: 720px) {
+  header {
+    header-box {
+      padding-inline: 1rem;
+      margin-top: 2rem;
+      text-align: center;
+      
+      header-content {
+        display: inline-block;
       }
     }
   }
-
-  .sub-nav-root {
-    padding-left: 0;
-    padding-right: 0.5rem;
-  }
-}
-
-// Navigation Mobile Responsive
-@media screen and (max-width: 720px) {
+  
   nav {
-    .nav-contain {
+    nav-container {
       padding: 0;
 
       .nav-section {
         display: block;
       }
 
-      .nav-title {
+      nav-title {
         padding-block: 1rem;
       }
 
-      .router {
+      nav-router {
         padding-block: .25rem;
-        position: absolute;
         text-align: center;
         background-color: hsl(var(--bg-primary), 75%);
         backdrop-filter: blur(4px);
@@ -256,76 +306,43 @@ nav {
         width: 100%;
         padding-inline: 0;
 
-        .nav-item {
-          font-size: 10pt;
+        nav-item {
           min-width: fit-content;
           display: inline-block;
           flex-basis: 20%;
           padding: 0.5rem;
+          
+          a {
+            letter-spacing: .5pt !important;
+            font-size: 10pt;
+          }
         }
       }
     }
-  }
-}
-
-// Header
-.header-sizing {
-  display: block;
-  background-size: cover;
-  background-position: center;
-  padding-inline: 5%;
-
-  .header-content {
-    max-width: 1280px; // screen-xl
-    margin: 0 auto;
-    padding-block: 4rem;
-  }
-
-  .title {
-    background-color: hsla(var(--bg-primary), .75);
-    box-shadow: var(--box-shadow-lg);
-    border: 2px solid hsl(var(--bg-secondary));
-    border-radius: var(--radius-lg);
-    display: inline-block;
-    padding-block: 2.5rem;
-    padding-inline: 3rem;
-    backdrop-filter: blur(4px); // backdrop-blur-sm
-    margin-inline: 5%;
-
-    h1 {
-      font-size: 24pt;
-      font-weight: bold;
-      background: var(--tx-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin: 0;
-    }
-
-    p {
-      color: hsl(var(--tx-secondary));
-      margin-bottom: 0;
-      font-size: 1.25rem; // text-xl
-    }
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .header-sizing {
-    .header-content {
-      width: 100%;
-    }
-
-    .title {
-      text-align: center;
-      padding-inline: 2.5rem;
-
-      h1 {
-        font-size: 24pt;
+    
+    sub-navigation {
+    display: flex;
+    
+      i {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+      nav-item {
+        flex-basis: fit-content;
+        padding-inline: 0;
+        margin-inline: 0;
+        a {
+          font-size: 10pt;
+        }
+      }
+      nav-arrow {
       }
     }
   }
 }
+
+
 
 // Footer Styling
 footer {
@@ -394,7 +411,6 @@ error-404 {
   }
 }
 
-
 // Content Features
 .btn-center {
   display: inline-block;
@@ -417,7 +433,7 @@ error-404 {
   text-decoration: none;
   transition: all 100ms;
   font-size: 14pt;
-  margin-block: .5rem;
+  margin-block: 0.5rem;
 
   &:hover {
     color: hsl(var(--bg-primary));
@@ -465,7 +481,7 @@ error-404 {
 
   &:hover {
     color: hsl(var(--tx-accent), 50%);
-    box-shadow: 0 0.1em hsl(var(--tx-accent), 50%);;
+    box-shadow: 0 0.1em hsl(var(--tx-accent), 50%);
   }
 }
 img {
@@ -475,7 +491,7 @@ heading h1 {
   background-color: hsl(var(--tx-accent));
   color: hsl(var(--bg-primary));
   width: fit-content;
-  border: 2px solid hsl(var(--bg-secondary));
+  border: 2px solid hsl(var(--bg-contrast-dark));
   padding: 0.3em 2em;
   border-radius: var(--radius-md);
 }
@@ -495,7 +511,7 @@ heading h2 {
 
   // Section Classes
   section {
-    margin-inline: $margin;
+    padding-inline: $margin;
     padding-block: 1rem;
     margin-block: 2rem;
 
@@ -513,7 +529,16 @@ heading h2 {
       font-size: 16pt;
       line-height: 1.75;
     }
-
+    li {
+      margin-bottom: 1rem;
+      font-family: var(--font), serif;
+      font-size: 16pt;
+      line-height: 1.75;
+    }
+    heading h1 {
+      // Reset Margin when inside Section
+      margin-top: 0;
+    }
     // Layouts
     column-container {
       display: grid;
@@ -538,9 +563,8 @@ heading h2 {
           text-align: center;
           width: 100%;
           display: block;
-          padding-bottom: .3rem;
+          padding-bottom: 0.3rem;
         }
-
       }
 
       column[bg-color] {
@@ -549,6 +573,13 @@ heading h2 {
 
       column[shadow] {
         box-shadow: var(--box-shadow-lg);
+      }
+
+      // Modifiers
+      &[flow] {
+        // Newspaper Style Column Layout, useful for long lists with a lot of items.
+        display: block;
+        column-width: 20rem;
       }
     }
 
@@ -562,13 +593,13 @@ heading h2 {
         overflow: hidden;
         margin: 0 auto;
         height: auto;
-        min-width: 25rem;
+        min-width: 20rem;
         padding: 1rem;
         box-shadow: var(--box-shadow-lg);
         font-size: 14pt;
         background-color: hsl(var(--bg-secondary));
 
-        &:gradient {
+        &[gradient] {
           background-color: hsla(var(--bg-accent), 75%);
           background-image: var(--bg-gradient-dark);
         }
@@ -594,8 +625,13 @@ heading h2 {
       color: hsl(var(--tx-accent));
     }
 
+    &[image] {
+      // Background Image is set in the HTML
+      padding-inline: $margin;
+      margin-inline: 0;
+      border-radius: var(--radius-lg);
+    }
   }
-
 }
 
 // Content Media fixes
@@ -606,14 +642,13 @@ heading h2 {
   .content-container {
     display: block;
 
-
     // Section Classes
     section {
       margin: 0 auto;
       padding-block: 1rem;
+      padding-inline: 0;
       display: block;
       width: 90%;
-
 
       p {
         font-size: 12pt;
@@ -633,7 +668,6 @@ heading h2 {
 
       // Layouts
       column-container {
-
         column {
           margin: 0 auto;
 
@@ -646,12 +680,15 @@ heading h2 {
 
       grid-container {
         grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-
+        display: block;
         grid-item {
+          display: block;
+          width: 80%;
+          margin-inline: auto;
+          margin-top: 1rem;
           height: fit-content;
         }
       }
-
     }
   }
 }
