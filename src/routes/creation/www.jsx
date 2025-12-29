@@ -1,13 +1,14 @@
 import Header from "~/components/Header.jsx";
-function animations() {
+
+function www() {
   return (
-    <>
-      <Header title="Animations" img="rigs" />
+    <div>
+      <Header title="Web Projects" img="about" />
 
       <center style={"font-size: 24px; padding-block: 8rem; font-weight: 600;"}>
-        Animations Coming Soon!
+        Websites Coming Soon!
       </center>
-    </>
+    </div>
   );
 }
-export default animations;
+export default www;

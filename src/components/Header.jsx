@@ -15,7 +15,7 @@ export default function Header(props) {
         {/* Navigation Content */}
         <Nav title={page_title} />
 
-        <Show when={props.onlyNav === false || undefined}>
+        <Show when={props.onlyNav === undefined}>
           {/* Header Content */}
           <header-box>
             <header-position>

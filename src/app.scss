@@ -6,7 +6,7 @@ $font-heading: "Source Sans Pro", serif;
   /* Defaults */
   --bg-primary: 0, 0%, 97%;
   --bg-secondary: 0, 0%, 90%;
-  --bg-accent: 340, 33%, 83%;
+  --bg-accent: 340, 33%, 83%, 50%;
   --bg-contrast-light: 0, 0%, 20%;
   --bg-contrast-dark: 0, 0%, 10%;
   --bg-dark-accent: 334, 79%, 29%;
@@ -54,12 +54,12 @@ $font-heading: "Source Sans Pro", serif;
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: 260, 5%, 5%;
-    --bg-secondary: 260, 10%, 10%;
-    --bg-accent: 334, 40%, 10%;
-    --bg-contrast-light: 0, 0%, 20%;
-    --bg-contrast-dark: 0, 0%, 10%;
-    --bg-contrast-accent: 180, 10%, 10%;
+    --bg-primary: 260, 2.5%, 5%;
+    --bg-secondary: 260, 10%, 6.5%;
+    --bg-accent: 334, 50%, 20%, 50%;
+    --bg-contrast-light: 0, 0%, 80%;
+    --bg-contrast-dark: 0, 0%, 70%;
+    --bg-contrast-accent: 180, 10%, 80%;
     --bg-gradient: linear-gradient(
       45deg,
       hsl(240, 5%, 5%) 0%,
@@ -97,11 +97,18 @@ $font-heading: "Source Sans Pro", serif;
 }
 
 body {
-  background: hsl(var(--bg-primary));
   color: hsl(var(--tx-primary));
   font-family: var(--font), serif;
   margin: 0;
   overflow-x: hidden;
+ 
+  $bg-color: hsl(var(--bg-accent));
+  $bg-white: hsl(var(--bg-primary));
+
+	background: repeating-linear-gradient(transparent, transparent 8px, $bg-color 8px, $bg-color 12px, transparent 12px, transparent 16px, $bg-color 12px, $bg-color 32px, transparent 32px, transparent 36px, $bg-color 36px, $bg-color 40px, transparent 40px, transparent 64px), repeating-linear-gradient(90deg, transparent, transparent 8px, $bg-color 8px, $bg-color 12px, transparent 12px, transparent 16px, $bg-color 12px, $bg-color 32px, transparent 32px, transparent 36px, $bg-color 36px, $bg-color 40px, transparent 40px, transparent 64px), $bg-white;
+	background-blend-mode: multiply;
+	background-color: $bg-white;
+
 }
 
 /* Global Assets */
@@ -152,10 +159,11 @@ header {
     }
   }
 }
+
 // Navigation
 nav {
   nav-container {
-    background-color: hsl(var(--bg-accent));
+    background-color: hsla(var(--bg-accent));
     color: hsl(var(--tx-primary));
     padding: 1rem;
     display: block;
@@ -168,8 +176,12 @@ nav {
       display: inline-block;
       flex-basis: 2.5rem; // basis-10
       text-align: center;
-      padding: 0 1rem;
-
+      padding-inline: 1rem;
+      padding-block: 0.25rem;
+      font-weight: 600;
+      background-color: hsla(var(--bg-primary), 75%);
+      border-radius: var(--radius-lg);
+      
       a {
         font-size: 14pt;
         letter-spacing: 0.5pt;
@@ -191,7 +203,7 @@ nav {
   }
 
   sub-navigation {
-    background-color: hsl(var(--bg-contrast-dark));
+    background-color: hsl(var(--bg-secondary));
     padding: 0.5rem;
     justify-content: center;
     align-items: center;
@@ -248,7 +260,8 @@ nav {
     display: inline-block;
     flex-basis: 2.5rem; // basis-10
     text-align: center;
-    padding: 0 1rem;
+    padding-inline: 1rem;
+    padding-block: 0.25rem;
 
     a {
       font-size: 14pt;
@@ -301,7 +314,7 @@ nav {
         text-align: center;
         background-color: hsl(var(--bg-primary), 75%);
         backdrop-filter: blur(4px);
-        border-bottom: 2px solid hsl(var(--bg-accent));
+        border-bottom: 2px solid hsla(var(--bg-accent));
         display: flex;
         width: 100%;
         padding-inline: 0;
@@ -342,46 +355,28 @@ nav {
   }
 }
 
-
-
 // Footer Styling
 footer {
   background-color: hsl(var(--bg-secondary));
-
-  grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    column-gap: 1rem;
-    padding: 1rem;
-    nav {
-      ul {
+  padding: 1rem;
+  text-align: center;
+  nav {
+    padding-bottom: 2rem;
+    ul {
+      display: inline-block;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      h2 {
         margin-block: 0;
-        list-style-type: disc;
-        li {
-          a {
-            font-size: 14pt;
-            letter-spacing: 0.5pt;
-            padding: 3px 0.5rem;
-            border: 2px solid transparent;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 0 inset transparent;
-
-            ul {
-              li {
-                padding-inline: 1rem;
-                a {
-                  color: white;
-                  text-decoration: none;
-                }
-              }
-            }
-            &:hover {
-              color: hsl(var(--tx-contrast-accent));
-              cursor: pointer;
-              box-shadow: 0 -2px inset hsl(var(--tx-accent));
-            }
-          }
+      }
+      li {
+        display: inline-block;
+        padding: 0.5rem;
+        
+        a {
+          color: white;
         }
       }
     }
@@ -484,9 +479,11 @@ error-404 {
     box-shadow: 0 0.1em hsl(var(--tx-accent), 50%);
   }
 }
+
 img {
   max-width: 100%;
 }
+
 heading h1 {
   background-color: hsl(var(--tx-accent));
   color: hsl(var(--bg-primary));
@@ -504,20 +501,26 @@ heading h2 {
 }
 
 .content-container {
-  margin: 0 auto;
+  margin-inline: auto;
+  padding-block: 1rem;
+  margin-block: 2rem;
+  border-radius: var(--radius-lg);
   max-width: 1280px;
+  background-color: hsl(var(--bg-secondary));
+  border: 2px solid hsla(var(--bg-contrast-light), 20%);
 
-  $margin: 6rem;
+  $margin: 4rem;
+  $padding: 2rem;
 
   // Section Classes
   section {
-    padding-inline: $margin;
+    margin-inline: $margin;
     padding-block: 1rem;
     margin-block: 2rem;
+    padding-inline: $padding;
 
     p {
       margin-bottom: 1rem;
-      text-indent: 3rem;
       font-family: var(--font), serif;
       font-size: 16pt;
       line-height: 1.75;
@@ -542,18 +545,19 @@ heading h2 {
     // Layouts
     column-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
       column-gap: 1rem;
-
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      
       column {
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        margin: 0 auto;
-        height: fit-content;
+        width: 90%;
+        margin-inline: auto;
         padding: 1rem;
+        height: auto;
+        margin-bottom: 1rem;
 
         img {
-          width: 100%;
+          width: 80%;
+          margin-inline: auto;
           display: block;
           filter: var(--drop-shadow);
           border-radius: var(--radius-md);
@@ -564,15 +568,71 @@ heading h2 {
           width: 100%;
           display: block;
           padding-bottom: 0.3rem;
+          
         }
-      }
+        
+        
+        &[bg-color] {
+          background-color : hsl(var(--bg-secondary));
+          padding: 1rem;
+          border: 2px solid hsla(var(--bg-contrast-light), 10%);
+        }
+        
+        &[shadow] {
+          box-shadow : var(--box-shadow-lg);
+        }
+        
+        &[align-center-v] {
+          align-items: center;
+          vertical-align: middle;
+          justify-content: center;
+        }
 
-      column[bg-color] {
-        background-color: hsl(var(--bg-secondary));
-      }
+        img {
+          width: 80%;
+          margin-inline: auto;
+          display: block;
+          filter: var(--drop-shadow);
+          border-radius: var(--radius-md);
+        }
 
-      column[shadow] {
-        box-shadow: var(--box-shadow-lg);
+        img-caption {
+          text-align: center;
+          width: 100%;
+          display: block;
+          padding-bottom: 0.3rem;
+          
+        }
+        
+        
+        &[bg-color] {
+          background-color : hsl(var(--bg-secondary));
+          padding: 1rem;
+          border: 2px solid hsla(var(--bg-contrast-light), 10%);
+        }
+        
+        &[shadow] {
+          box-shadow : var(--box-shadow-lg);
+        }
+        
+        &[align-center-v] {
+          align-items: center;
+          vertical-align: middle;
+          justify-content: center;
+        }
+        &[split] {
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          width: 90%;
+          margin-inline: auto;
+          padding: 1rem;
+          border: 2px solid hsla(var(--bg-contrast-light), 10%);
+          box-shadow: var(--box-shadow-lg);
+          min-height: fit-content;
+          height: auto;
+          margin-bottom: 1rem;
+          background-color: hsla(var(--bg-primary), 50%);
+        }
       }
 
       // Modifiers
@@ -581,6 +641,8 @@ heading h2 {
         display: block;
         column-width: 20rem;
       }
+      
+      
     }
 
     grid-container {
@@ -594,35 +656,44 @@ heading h2 {
         margin: 0 auto;
         height: auto;
         min-width: 20rem;
+        width: 90%;
         padding: 1rem;
         box-shadow: var(--box-shadow-lg);
         font-size: 14pt;
         background-color: hsl(var(--bg-secondary));
+        border: 2px solid hsla(var(--bg-contrast-light), 10%);
+
 
         &[gradient] {
           background-color: hsla(var(--bg-accent), 75%);
           background-image: var(--bg-gradient-dark);
+          border: 2px solid hsla(var(--bg-contrast-light), 40%);
         }
 
         &[emphasis] {
           // Apply this attribute for grid cards which need extra visual emphasis
 
-          background-color: hsl(var(--bg-accent));
+          background-color: hsla(var(--bg-accent));
         }
       }
     }
 
     // Modifiers
-    &[breakout] {
+    &[full-width] {
       padding-inline: $margin;
       margin-inline: 0;
-      background-color: hsl(var(--bg-secondary));
-      border-radius: var(--radius-lg);
+      background-color: hsla(var(--bg-secondary));
+      border-inline-width: 0 !important;
+      border-radius: 0 !important;
+      
     }
 
-    &[accent] {
-      background-color: hsl(var(--bg-accent));
+    &[breakout] {
+      background-color: hsla(var(--bg-accent));
       color: hsl(var(--tx-accent));
+      border: 2px solid hsla(var(--tx-accent), 50%);
+      border-radius: var(--radius-lg);
+      
     }
 
     &[image] {
@@ -646,7 +717,7 @@ heading h2 {
     section {
       margin: 0 auto;
       padding-block: 1rem;
-      padding-inline: 0;
+      padding-inline: 1rem;
       display: block;
       width: 90%;
 

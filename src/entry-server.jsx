@@ -12,7 +12,7 @@ export default createHandler(() => (
           <link rel="icon" href="/images/icon/favicon.ico" />
           <link rel="stylesheet" href="/fonts/fonts.css" />
 
-          <title>Sakura Sedaia - Portfolio</title>
+          <title>Sedaia Designs</title>
           {assets}
         </head>
         <body>

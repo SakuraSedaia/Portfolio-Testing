@@ -1,5 +1,5 @@
 """
-This simple script is meant to speed up the process of adding new images to the render list
+This script is meant to speed up the process of adding new images to the render list
 """
 from pathlib import Path
 import os
@@ -33,6 +33,7 @@ PathFinal = [
 
 
 class FilePaths:
+    """Manipulates the Filename and Path of a file"""
     def __init__(self, src):
         '''
         Generates the associated Filename and Path for a new jpeg file
@@ -68,7 +69,9 @@ class GenerateFiles:
     def jpeg(self, dst):
         '''Converts the PNG to JPEG'''
 
-        if Path(dst).exists():  # Checks if File already exists, skipping if True
+        jpeg_file = FilePaths(source).suffix("jpeg").replace(" ", "_")
+
+        if Path(dst).exists():  # Checks if the File already exists, skipping if True
             print(f"/{path}/{Path(jpeg_file).name}", "Exists, skipping file")
             return 'file-exists'
 
@@ -82,9 +85,10 @@ class GenerateFiles:
         print("Saved file", f"/{path}/{Path(jpeg_file).name}")
         return 'finished'
 
+
     def json(self, file):
         '''
-        Docstring for json
+        Docstring for JSON
 
         :param file: The output file
         '''
@@ -92,30 +96,21 @@ class GenerateFiles:
         return 'finished'
 
 
-def GenerateGallery(png, output_dir):
-
-    source = Path(f'{filedir}/{img}')
-    jpeg_name = FilePaths(source).suffix("jpeg")
-    jpeg_file = FilePaths(jpeg_name).path(dstpath)
-
-    json_name = FilePaths(source).suffix("json")
-    json_file = FilePaths(json_name).path(dstpath)
-
-
 # Execute Functions
 if Path(output_root).exists() is not True:
     os.mkdir(output_root)
-for p, path in enumerate(paths):
 
+
+for p, path in enumerate(paths):
     if Path(f"{output_root}/{path}").exists() is not True:
         os.mkdir(f"{output_root}/{path}")
 
     filedir = Path(f"{source_root}/{path}").absolute()
     dstpath = Path(f"{output_root}/{path}").absolute()
+
     filepath = os.listdir(filedir)
     for i, img in enumerate(filepath):
-
-        print(GenerateGallery(img, dstpath))
+        GenerateFiles(img).jpeg(f"{dstpath}/{img}")
 
 
 # shutil.copy2(src=ImageSource, dst=ImageDestination)

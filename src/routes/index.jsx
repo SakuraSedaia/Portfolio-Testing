@@ -13,23 +13,20 @@ function About() {
 
       <div class={"content-container"}>
         <section id={"about-me"}>
-          <heading>
-            <h1>Who am I?</h1>
-          </heading>
-
-          <column-container>
+          <column-container split>
             <column>
+              <heading>
+                <h1>Who am I?</h1>
+              </heading>
               <p>
-                I am a {new Date().getFullYear() - 2003} year old, self taught{" "}
-                <i>Software Developer</i> and novice UI Designer specializing in
-                SolidJS, SCSS, and Python based projects, and currently work
-                alone on a few passion projects including this website, an
-                extension for Blender, and other small utilities for helping
-                with those projects.
+                I am a {new Date().getFullYear() - 2003} year old novice UI
+                Designer specializing in SolidJS, SCSS, and Python based
+                projects, and have it as my main goal to develop hand-crafted
+                solutions in a timely and effective manner.
               </p>
             </column>
 
-            <column bg-color shadow>
+            <column>
               <img
                 src="/images/camera/iowa_motor_speedway_garage_selfie.jpg"
                 width={"200px"}
@@ -41,23 +38,26 @@ function About() {
           </column-container>
         </section>
 
-        <section id={"notable-projects"} breakout accent>
+        <section id={"notable-projects"} breakout full-width>
           <heading>
             <h1>Notable Projects</h1>
           </heading>
 
           <grid-container>
             <grid-item>
-              <h1>Portfolio Website</h1>
+              <h1>SACR</h1>
               <hr />
+              <img
+                src={"images/rig-headers/SACR/R7.4 Full.png"}
+                alt={"SACR R7.4 Full Logo"}
+              />
               <p>
-                This very website you are on now is one of my latest, and most
-                complex projects so far. It was created due to a desire to have
-                a more responsive site using a more modern development
-                framework, in this case, SolidJS and SCSS
+                SACR, or Sakura Advanced Character Rig, is my longest running
+                project which started in 2019 under the name SAMR before taking
+                on the SACR title in 2020
               </p>
               <a
-                href={"https://github.com/SakuraSedaia/sakura-portfolio"}
+                href={"https://github.com/SakuraSedaia/sakura-character-rig"}
                 class={"btn"}
               >
                 Github Repo
@@ -92,8 +92,8 @@ function About() {
             <h1>Preferred Tooling</h1>
           </heading>
 
-          <column-container>
-            <column>
+          <grid-container>
+            <grid-item>
               <h1>IDEs:</h1>
               <hr />
               <h2>
@@ -104,28 +104,11 @@ function About() {
                 >
                   PyCharm
                 </a>
+                <p>Python and Web Development</p>
               </h2>
-              <p>
-                Starting December 2025, I made the jump over to PyCharm where I
-                now do all my projects.
-              </p>
-              <hr />
-              <h2>
-                <a
-                  href={"https://code.visualstudio.com/"}
-                  target={"_blank"}
-                  class={"link"}
-                >
-                  Microsoft VS Code
-                </a>
-              </h2>
-              <p>
-                VS Code is the main editor I used before switching to Pycharm
-                due to it's ease of use for developing Blender Extensions
-              </p>
-            </column>
+            </grid-item>
 
-            <column>
+            <grid-item>
               <h1>3D Pipeline:</h1>
               <hr />
               <h2>
@@ -137,10 +120,7 @@ function About() {
                   Blender
                 </a>
               </h2>
-              <p>
-                Blender is a free and open source 3D creation suite, and is used
-                for my rigging and asset creation projects.
-              </p>
+              <p>3D Rendering, Modelling, and Rigging</p>
               <hr />
               <h2>
                 <a
@@ -151,13 +131,10 @@ function About() {
                   Blockbench
                 </a>
               </h2>
-              <p>
-                Blockbench is a free Voxel editor tailored for working with
-                Minecraft Models and Textures.
-              </p>
-            </column>
+              <p>Textures and Voxel Models</p>
+            </grid-item>
 
-            <column>
+            <grid-item>
               <h1>Video Editing:</h1>
               <hr />
               <h2>
@@ -171,9 +148,12 @@ function About() {
                   Davinci Resolve
                 </a>
               </h2>
-              <p>Davinci Resolve is a professional grade video editing suite</p>
-              <hr />
+              <p>Video Editing</p>
+            </grid-item>
+
+            <grid-item>
               <h1>Photo Editing:</h1>
+              <hr />
               <h2>
                 <a
                   href={
@@ -185,17 +165,54 @@ function About() {
                   Affinity Photo 2
                 </a>
               </h2>
-              <p>
-                Affinity Photo 2 is the predecessor to Canva Affinity, and is my
-                preferred photo editor
-              </p>
+              <p>Photo Editing and Manipulation</p>
+            </grid-item>
+          </grid-container>
+        </section>
+
+        {/* TODO: Add Logos to each entry */}
+        <section id={"technologies"}>
+          <heading>
+            <h1>My Technologies</h1>
+          </heading>
+          <column-container>
+            <column split>
+              <h3>Python</h3>
+              <hr />
+              <ul>
+                <li>Blender Python API</li>
+                <li>Python 3</li>
+              </ul>
+            </column>
+            <column split>
+              <h3>Web Dev</h3>
+              <hr />
+              <ul>
+                <li>HTML</li>
+                <li>SCSS</li>
+                <li>CSS</li>
+                <li>SolidJS</li>
+                <li>JavaScript</li>
+              </ul>
+            </column>
+            <column split>
+              <h3>Other</h3>
+              <hr />
+              <ul>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>Blender</li>
+                <li>Blockbench</li>
+                <li>Davinci Resolve</li>
+                <li>Affinity Photo 2</li>
+                <li>Affinity Designer 2</li>
+              </ul>
             </column>
           </column-container>
         </section>
 
-        {/* TODO: Add Logos to each entry */}
-        <section id={"my-resume"} breakout accent>
-          <div class={"content"}>
+        <section id={"my-resume"} breakout>
+          <content-row>
             <span>
               Interested? Check out my Resume to get a more in depth profile on
               my work history!
@@ -203,28 +220,7 @@ function About() {
             <A href={"/resume"} class={"btn-invert"}>
               View Resume
             </A>
-          </div>
-        </section>
-
-        <section id={"technologies"}>
-          <heading>
-            <h1>My Technologies</h1>
-          </heading>
-          <column-container flow>
-            <ul>
-              <li>Blender 3D</li>
-              <li>Blender Python API</li>
-              <li>HTML</li>
-              <li>SCSS</li>
-              <li>CSS</li>
-              <li>SolidJS</li>
-              <li>Python</li>
-              <li>JavaScript</li>
-              <li>Blockbench</li>
-              <li>Davinci Resolve</li>
-              <li>Affinity Photo 2</li>
-            </ul>
-          </column-container>
+          </content-row>
         </section>
       </div>
 

@@ -11,6 +11,12 @@ export default function Nav(props) {
       {/* TODO: Create a new media query to swap from a Navigation Bar to a Navigation Menu for Mobile Users */}
       <nav-container>
         <nav-title class={"nav-section"}>
+          <img
+            src={"/images/icon/favicon.ico"}
+            alt={"logo"}
+            aria-disabled={true}
+            style={"transform: scale(1.5); padding-right: .25rem;"}
+          />
           <a href="/">{props.title}</a>
         </nav-title>
         <nav-router class={"nav-section"}>
@@ -23,7 +29,7 @@ export default function Nav(props) {
             }
           >
             {(nav, n) => (
-              <Show when={nav.show == true}>
+              <Show when={nav.show === true}>
                 <nav-item class={`${active("/" + nav.path)}`}>
                   <a href={"/" + nav.path}>{nav.page}</a>
                 </nav-item>
@@ -49,7 +55,7 @@ export default function Nav(props) {
               "/" + nav.path.substring(0, nav.path.length - 1),
             )}
           >
-            <Show when={nav.subnav == true}>
+            <Show when={nav.subnav === true}>
               <sub-navigation>
                 <For
                   each={nav.subpages}
@@ -60,7 +66,7 @@ export default function Nav(props) {
                   }
                 >
                   {(subnav, s) => (
-                    <Show when={subnav.show == true}>
+                    <Show when={subnav.show === true}>
                       <i>-</i>
                       <nav-item class={`${active("/" + subnav.path)}`}>
                         <a href={"/" + subnav.path}>{subnav.page}</a>
