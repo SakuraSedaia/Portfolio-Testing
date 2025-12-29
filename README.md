@@ -1,32 +1,9 @@
-# SolidStart
+# Sedaia Design's Portfolio
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+## About the project
 
-## Creating a project
+This project is a portfolio website for Sedaia Design, a kinda brand I'm trying to build for myself for my 3D and Web-based work. The project itself is built using SolidStart, a framework by the SolidJS project which allows for easy creation of websites and web apps using SolidJS.
 
-```bash
-# create a new project in the current directory
-npm init solid@latest
-
-# create a new project in my-app
-npm init solid@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Solid apps are built with _presets_, which optimise your project for deployment to different environments.
-
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
+While the project initially used TailwindCSS for the styling framework, I recently switched to my new custom CSS framework called [Sedaia Design](https://github.com/SedaiaDesign/sedaia-design). Sedaia Design is a structured CSS framework that is designed to be straightforward to use and very customizable. Although, right now it's still in development as this site is a test-bed for the framework and is slowly building up different components and features.
 
 ## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
