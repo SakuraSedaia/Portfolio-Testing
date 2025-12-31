@@ -10,7 +10,7 @@ export default function Nav(props) {
     <nav>
       {/* TODO: Create a new media query to swap from a Navigation Bar to a Navigation Menu for Mobile Users */}
       <nav-container>
-        <nav-title class={"nav-section"}>
+          <nav-title class={"nav-section"}>
           <img
             src={"/images/icon/favicon.ico"}
             alt={"logo"}
@@ -19,7 +19,7 @@ export default function Nav(props) {
           />
           <a href="/">{props.title}</a>
         </nav-title>
-        <nav-router class={"nav-section"}>
+          <nav-router class={"nav-section"}>
           <For
             each={Routes}
             fallback={
@@ -39,16 +39,13 @@ export default function Nav(props) {
         </nav-router>
       </nav-container>
       {/* First, check each route for if Subnav is enabled. If there are any, create a secondary navbar for them and populate it */}
-      <For
-        each={Routes}
-        fallback={
-          <sub-navigation>
+      <br />
+      <For each={Routes} fallback={
+        <sub-navigation>
             <nav-item class={"nav-item"}>
               <a>Loading Nav...</a>
             </nav-item>
-          </sub-navigation>
-        }
-      >
+          </sub-navigation>}>
         {(nav, n) => (
           <Show
             when={location.pathname.includes(

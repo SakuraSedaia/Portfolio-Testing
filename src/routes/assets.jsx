@@ -73,6 +73,7 @@ function assets() {
           </heading>
 
           <grid-container>
+						{/* Wolf Rig */}
             <grid-item>
               <h2>Wolf Rig</h2>
               <hr />
@@ -83,7 +84,53 @@ function assets() {
               </p>
               <a class={"btn"}>Download</a>
             </grid-item>
+
+
+						{/* Sheep Rig */}
             <grid-item>
+              <h2>Sheep Rig</h2>
+              <hr />
+              <p>
+                This Sheep rig is one of several animal rigs developed by
+                Sakura, it was made prior to the adoption of Python UI's by
+                Sakura for all his rigs.
+              </p>
+              <a class={"btn"} href={"/"}>
+                Download
+              </a>
+            </grid-item>
+
+
+						{/* Sakura Vanilla Tools and Weapons */}
+						<grid-item>
+              <h2>Tool and Weapon pack</h2>
+              <hr />
+              <p>
+                A full library of Minecraft Tools and Weapons, prepped for use with Blender's built-in asset library.
+              </p>
+              <a class={"btn"} onclick={downloadFile('/lib/blender/sakura_vanilla_tools_and_weapons.blend')}>
+                Download
+              </a>
+            </grid-item>
+
+
+						{/* Sheep Rig */}
+						<grid-item>
+              <h2>Sheep Rig</h2>
+              <hr />
+              <p>
+                This Sheep rig is one of several animal rigs developed by
+                Sakura, it was made prior to the adoption of Python UI's by
+                Sakura for all his rigs.
+              </p>
+              <a class={"btn"} href={"/"}>
+                Download
+              </a>
+            </grid-item>
+
+
+						{/* Sheep Rig */}
+						<grid-item>
               <h2>Sheep Rig</h2>
               <hr />
               <p>

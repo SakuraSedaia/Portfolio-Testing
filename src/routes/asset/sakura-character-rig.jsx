@@ -1,6 +1,5 @@
 import Header from "~/components/Header.jsx";
 import rigIndex from "./sacr_index.json";
-import "./sakura-character-rig.scss";
 import { For, Show, createSignal } from "solid-js";
 import { NoHydration } from "solid-js/web";
 
@@ -54,222 +53,51 @@ function sacr() {
   }
 
   return (
-    <div>
-      <NoHydration>
-        <Header title="Sakura Minecraft Character Rig" img="sacr" />
-      </NoHydration>
+    <>
+      <Header title="Sakura Minecraft Character Rig" img="sacr" />
 
-      <div class="sacr-content">
-        <div class="sacr-about">
-          <div class="sacr-area breakdown">
-            <div class="section-header inline-block">
-              <h1>What is SACR</h1>
-            </div>
-            <p class="indent-8 py-4">
-              SACR is a rig developed by Sakura for use in Blender in the
-              creation of Minecraft Character based renders with a huge emphasis
-              on a comprehensive feature package that is light on the system and
-              easy to use. The Rig has evolved from a simple, bare-bones rig to
-              a lightweight and versatile base rig with the tools to modify and
-              customize the rig however the user wants.
-            </p>
-            <p class="indent-8 pb-5">
-              Revision 7 is the latest stable iteration of SACR, with 7.4 being
-              the most stable SACR has ever been. One of the biggest features
-              that I have developed for the rig has been the new Python based{" "}
-              <a href="/addon/sakura-rig-interface">Rig Interface</a>, which was
-              first developed during the development of Revision 7.3
-            </p>
-          </div>
+      <div class={"content-container"}>
+				<section id={"about"}>
+					<heading>
+						<h1>
+							About SACR
+						</h1>
+					</heading>
+					<standard-container>
+						<p>Sakura's Advanced Character Rig is a lightweight and highly customizable rig for <a href={"https://blender.org/"} class={"link"} target={"_blank"}>Blender 3D</a>, and has been developed since early 2019. The current build, R7.4 was originally started as Revision 3 back in 2021, and has grown through various forms through the years, and now is fully integrated with a UI Extension for greater customizability</p>
+					</standard-container>
 
-          <hr />
+				</section>
 
-          <div class="sacr-area rigs">
-            <div class="sacr-downloads">
-              <div class="branch stable">
-                <div class="dwn-img-contain">
-                  <img src={stable.logo} />
-                </div>
-                <p class="desc">{stable.description}</p>
+				<section id={"downloads"}>
+					<heading>
+						<h1>Downloads</h1>
+					</heading>
+					<column-container>
+						<column id={"stable"}>
+							<h2>Stable</h2>
+							<h3>SACR {stable.version}</h3>
+							<p>Content coming soon</p>
+						</column>
+						<Show when={dev.enabled}>
+							<column id={"dev"}>
+								<h2>Development Branch</h2>
+								<p>Content coming soon</p>
+							</column>
+						</Show>
+					</column-container>
+				</section>
 
-                <Show when={stable.styles.length > 1}>
-                  <div class="version" id="versionStable">
-                    <For
-                      each={stable.styles}
-                      fallback={<option>Loading...</option>}
-                    >
-                      {(style, i) => (
-                        <div
-                          class="build-tab"
-                          onclick={[
-                            updateBuild,
-                            [stable.branch, style.id, style.label],
-                          ]}
-                          id={style.id}
-                        >
-                          {style.label}
-                        </div>
-                      )}
-                    </For>
-                  </div>
-                </Show>
-
-                <div class="dwn-btn-contain">
-                  <a
-                    class="btn dwn-sacr"
-                    target="_blank"
-                    href={`${stable.github}${downloadPath}${stable.version}/${stableInfo[stableIndex()].fileName}`}
-                  >
-                    Download {stable.version}{" "}
-                    {stableInfo[stableIndex()].btn_label}
-                  </a>
-                  <div class="rig-info flex gap-2">
-                    <div class="rig-info-item">
-                      <a
-                        class="link"
-                        href={`${stable.github}${tagPath}${stable.version}`}
-                        target="_blank"
-                      >
-                        Source
-                      </a>
-                    </div>
-                    |
-                    <div class="rig-info-item">
-                      {stableInfo[stableIndex()].size}
-                    </div>
-                    |
-                    <div class="rig-info-item">
-                      {stableInfo[stableIndex()].date}
-                    </div>
-                    |
-                    <div class="rig-info-item">
-                      {stableInfo[stableIndex()].license}
-                    </div>
-                  </div>
-
-                  <Show when={stableInfo[stableIndex()].notes != null}>
-                    <hr />
-                    <div class="rig-notes mb-3">
-                      {stableInfo[stableIndex()].notes}
-                    </div>
-                  </Show>
-                </div>
-              </div>
-
-              <Show when={dev.enabled}>
-                <div class="branch dev">
-                  <div class="dwn-img-contain">
-                    <img src={dev.logo} />
-                  </div>
-                  <p class="desc">{dev.description}</p>
-                  <Show when={dev.styles.length > 1}>
-                    <div class="version" id="versionDev">
-                      <For
-                        each={dev.styles}
-                        fallback={<option>Loading...</option>}
-                      >
-                        {(style, i) => (
-                          <div
-                            class="build-tab"
-                            onclick={[
-                              updateBuild,
-                              [dev.branch, style.id, style.label],
-                            ]}
-                            id={style.id}
-                          >
-                            {style.label}
-                          </div>
-                        )}
-                      </For>
-                    </div>
-                  </Show>
-                  <div class="dwn-btn-contain">
-                    <a
-                      class="btn dwn-sacr"
-                      target="_blank"
-                      href={`${dev.github}${downloadPath}${devInfo[devIndex()].git_tag}/${devInfo[devIndex()].fileName}`}
-                    >
-                      Download {dev.version}
-                      {devInfo[devIndex()].btn_label}
-                    </a>
-                    <div class="rig-info flex gap-2">
-                      <div class="rig-info-item">
-                        <a
-                          class="link"
-                          href={dev.github + tagPath + dev.version}
-                          target="_blank"
-                        >
-                          Source
-                        </a>
-                      </div>
-                      |
-                      <div class="rig-info-item">
-                        {devInfo[devIndex()].size}
-                      </div>
-                      |
-                      <div class="rig-info-item">
-                        {devInfo[devIndex()].date}
-                      </div>
-                      |
-                      <div class="rig-info-item">
-                        {devInfo[devIndex()].license}
-                      </div>
-                    </div>
-
-                    <Show when={devInfo[devIndex()].notes != null}>
-                      <hr />
-                      <div class="rig-notes mb-3">
-                        {devInfo[devIndex()].notes}
-                      </div>
-                    </Show>
-                  </div>
-                </div>
-              </Show>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="sacr-area discord">
-            <h2 class="text-xl">Discord Server</h2>
-            <p>
-              Any comments, questions, concerns, or just want to share your
-              creations? Feel free to join my server and post to your heart's
-              content!
-            </p>
-
-            <br />
-
-            <div class="join-server">
-              <a
-                class="btn"
-                href="https://discord.gg/Qk4pfbG7Pf"
-                target="_blank"
-              >
-                Join the Discord
-              </a>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="sacr-area rig-gui">
-            <h2 class="text-xl">Sedaia Rig Interface</h2>
-            <p>
-              A new Blender extension developed to be the new front-end for SACR
-              preferences, as well as be a way for users to make their UI's with
-              ease.
-            </p>
-            <br />
-            <div class="join-server">
-              <a class="btn" href="/addon/sakura-rig-interface">
-                See the Rig UI
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+				<section id={"instructions"}>
+					<heading>
+						<h1>Instructions</h1>
+					</heading>
+					<standard-container>
+						<p>This rig is available in two places, here and through it's associated addon</p>
+					</standard-container>
+				</section>
+			</div>
+    </>
   );
 }
 export default sacr;
